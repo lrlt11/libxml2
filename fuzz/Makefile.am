@@ -1,10 +1,10 @@
 AUTOMAKE_OPTIONS = -Wno-syntax
 EXTRA_PROGRAMS = genSeed \
 		 api html lint reader regexp schema uri valid xinclude \
-		 xml xpath
+		 xml xpath c14n_fuzz
 check_PROGRAMS = testFuzzer
 EXTRA_DIST = html.dict regexp.dict schema.dict xml.dict xpath.dict \
-	     static_seed/uri static_seed/regexp fuzz.h
+	     static_seed/uri static_seed/regexp fuzz.h static_seed/c14n_fuzz
 CLEANFILES = $(EXTRA_PROGRAMS)
 AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include
 DEPENDENCIES = $(top_builddir)/libxml2.la
@@ -32,7 +32,7 @@ testFuzzer_SOURCES = testFuzzer.c fuzz.c
 
 corpus: seed/html.stamp seed/lint.stamp seed/reader.stamp seed/regexp.stamp \
     seed/schema.stamp seed/uri.stamp seed/valid.stamp seed/xinclude.stamp \
-    seed/xml.stamp seed/xpath.stamp
+    seed/xml.stamp seed/xpath.stamp seed/c14n_fuzz.stamp
 
 check-local: corpus
 	./testFuzzer$(EXEEXT)
@@ -237,3 +237,20 @@ fuzz-xpath: xpath$(EXEEXT) seed/xpath.stamp
 	    $$XML_FUZZ_OPTIONS \
 	    corpus/xpath seed/xpath
 
+# c14n_fuzz fuzzer
+
+seed/c14n_fuzz.stamp:
+	@mkdir -p seed/c14n_fuzz
+	cp -r $(srcdir)/static_seed/c14n_fuzz seed
+	@touch seed/c14n_fuzz.stamp
+
+c14n_fuzz_SOURCES = c14n_fuzz.c fuzz.c
+c14n_fuzz_LDFLAGS = $(AM_LDFLAGS) -fsanitize=fuzzer
+
+fuzz-c14n_fuzz: c14n_fuzz$(EXEEXT) seed/c14n_fuzz.stamp
+	@mkdir -p corpus/c14n_fuzz
+	./c14n_fuzz$(EXEEXT) \
+	    -dict=xml.dict \
+	    -max_len=$(XML_MAX_LEN) \
+	    $$XML_FUZZ_OPTIONS \
+	    corpus/c14n_fuzz seed/c14n_fuzz	    
