@@ -15,6 +15,6 @@
       xmlns:ns15="http://example.com/ns15"
       xmlns:ns16="http://example.com/ns16"
       xmlns:ns17="http://example.com/ns17"
-      xmlns:ns17="http://example.com/ns17">
+      xmlns:ns18="http://example.com/ns18">
   <ns1:child>Content</ns1:child>
 </root>
