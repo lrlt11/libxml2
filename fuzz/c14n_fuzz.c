@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 
-int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
+static int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     if(!data || size == 0) {
         return 0;
     }

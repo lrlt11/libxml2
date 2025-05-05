@@ -1,0 +1,20 @@
+<root xmlns:ns1="http://example.com/ns1"
+      xmlns:ns2="http://example.com/ns2"
+      xmlns:ns3="http://example.com/ns3"
+      xmlns:ns4="http://example.com/ns4"
+      xmlns:ns5="http://example.com/ns5"
+      xmlns:ns6="http://example.com/ns6"
+      xmlns:ns7="http://example.com/ns7"
+      xmlns:ns8="http://example.com/ns8"
+      xmlns:ns9="http://example.com/ns9"
+      xmlns:ns10="http://example.com/ns10"
+      xmlns:ns11="http://example.com/ns11"
+      xmlns:ns12="http://example.com/ns12"
+      xmlns:ns13="http://example.com/ns13"
+      xmlns:ns14="http://example.com/ns14"
+      xmlns:ns15="http://example.com/ns15"
+      xmlns:ns16="http://example.com/ns16"
+      xmlns:ns17="http://example.com/ns17"
+      xmlns:ns17="http://example.com/ns17">
+  <ns1:child>Content</ns1:child>
+</root>
