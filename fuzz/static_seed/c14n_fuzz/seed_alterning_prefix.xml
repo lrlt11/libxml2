@@ -1,0 +1,12 @@
+<root>
+  <a xmlns:ns1="http://a">
+    <b xmlns:ns2="http://b">
+      <c xmlns:ns1="http://c">
+        <d xmlns:ns2="http://d">
+          <e xmlns:ns1="http://e"/>
+        </d>
+      </c>
+    </b>
+  </a>
+</root>
+

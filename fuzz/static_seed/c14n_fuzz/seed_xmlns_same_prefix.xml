@@ -1,0 +1,10 @@
+<root xmlns:ns="http://example1">
+  <ns:child xmlns:ns="http://example2">
+    <ns:subchild xmlns:ns="http://example3">
+      <ns:deep xmlns:ns="http://example4">
+        <ns:leaf xmlns:ns="http://example5"/>
+      </ns:deep>
+    </ns:subchild>
+  </ns:child>
+</root>
+
